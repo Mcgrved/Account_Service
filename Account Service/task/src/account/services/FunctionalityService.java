@@ -28,7 +28,6 @@ public class FunctionalityService {
     @Autowired
     private UserRepository userRepository;
 
-    //TODO
     public ResponseEntity<?> changeRole(RoleRequest roleRequest) {
         User foundUser = userRepository.findByEmailIgnoreCase(roleRequest.getUser());
         if (foundUser != null) {

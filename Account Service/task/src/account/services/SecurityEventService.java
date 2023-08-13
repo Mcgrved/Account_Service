@@ -26,11 +26,10 @@ public class SecurityEventService {
         return ResponseEntity.ok(securityEventList);
     }
 
-    public ResponseEntity<?> signalEvent(Event event, String subject, String object, String path) {
+    public void signalEvent(Event event, String subject, String object, String path) {
         SecurityEvent securityEvent = new SecurityEvent(LocalDate.now(),
                 event, subject, object, path);
         securityEventRepository.save(securityEvent);
-        return null;
     }
 
 

@@ -10,11 +10,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Base64;
-import java.util.logging.Logger;
 
 @Component
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
@@ -39,8 +38,6 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
             header = new String(Base64.getDecoder().decode(header)).split(":")[0];
 
             User user = userRepository.findByEmailIgnoreCase(header);
-            Logger.getGlobal().info("User: " + user);
-            Logger.getGlobal().info("Header: " + header);
             if (user == null || user.isAccountNonLocked()) {
                 securityEventController.signalEvent(Event.LOGIN_FAILED,
                         header,
@@ -48,9 +45,10 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
                         request.getRequestURI());
             }
             if (user != null && user.isAccountNonLocked()) {
-              // Logger.getGlobal().info("FAiled Login: " + user.getFailedAttempts());
                 authenticationFailureService.increaseFailedAttempts(user, request.getRequestURI());
             }
         }
     }
+
+
 }

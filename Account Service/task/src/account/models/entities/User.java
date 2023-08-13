@@ -8,10 +8,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Locale;
@@ -23,8 +24,6 @@ import java.util.Locale;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    //USER, ACCOUNTANT, ADMINISTRATOR;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("id")

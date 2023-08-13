@@ -12,18 +12,8 @@ import java.util.stream.Collectors;
 public class UserDetailsImplementation implements UserDetails {
 
     private final User user;
-//    private final String email;
-//    private final String password;
-//    private final List<GrantedAuthority> rolesAndAuthorities;
-
     public UserDetailsImplementation(User user) {
         this.user = user;
-//        this.email = user.getEmail();
-//        this.password = user.getPassword();
-//        this.rolesAndAuthorities = user.getRoles().stream()
-//                .map(Enum::name)
-//                .map(SimpleGrantedAuthority::new)
-//                .collect(Collectors.toList());
     }
 
     @Override

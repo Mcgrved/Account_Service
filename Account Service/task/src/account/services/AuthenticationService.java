@@ -21,7 +21,6 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
-import java.util.logging.Logger;
 
 @Service
 @Validated
@@ -29,12 +28,10 @@ public class AuthenticationService {
 
     @Autowired
     private SecurityEventController securityEventController;
-
+    @Autowired
     private final UserRepository userRepository;
-
     @Autowired
     private PasswordEncoder encoder;
-
     @Autowired
     private String[] breachedPasswords;
 
@@ -53,7 +50,6 @@ public class AuthenticationService {
         giveFirstRoles(user);
         checkBreachedPassword(user.getPassword());
         user.setPassword(encoder.encode(user.getPassword()));
-        Logger.getGlobal().info("User " + user.getRoles());
         userRepository.save(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

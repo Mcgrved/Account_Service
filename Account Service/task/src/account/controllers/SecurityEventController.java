@@ -24,7 +24,7 @@ public class SecurityEventController {
         return securityEventService.getSecurityEvents();
     }
 
-    public ResponseEntity<?> signalEvent(Event event, String subject, String object, String path) {
-        return this.securityEventService.signalEvent(event, subject, object, path);
+    public void signalEvent(Event event, String subject, String object, String path) {
+        this.securityEventService.signalEvent(event, subject, object, path);
     }
 }
